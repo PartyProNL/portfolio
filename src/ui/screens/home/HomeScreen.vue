@@ -1,0 +1,108 @@
+<template>
+  <div class="w-full relative min-h-screen flex flex-col bg-core-50">
+    <div class="pointer-events-none absolute inset-0 h-[80vh]">
+      <!-- Vertical lines -->
+      <div class="absolute left-[300px] top-0 h-full w-px bg-linear-to-b from-core-200 via-core-200 to-core-200/0"></div>
+      <div class="absolute right-[300px] top-0 h-full w-px  bg-linear-to-b from-core-200 via-core-200 to-core-200/0"></div>
+
+      <!-- Horizontal lines -->
+      <div class="absolute top-[140px] left-0 w-full h-px bg-core-200"></div>
+      <div class="absolute top-[370px] left-0 w-full h-px bg-core-200"></div>
+    </div>
+
+    <div class="w-full flex flex-col gap-4 items-center justify-center mt-[140px] h-[230px]">
+      <h1 class="font-bold text-8xl text-core-950 jump-up animation-duration-500">Youri Scheepers</h1>
+
+      <div class="flex items-center gap-1.5 jump-up animation-duration-600">
+        <PlatformButton
+            name="Android"
+            :selected="activeFilters.includes(androidPlatformId)"
+            @click="togglePlatformFilter(androidPlatformId)"
+        >
+          <IconAndroid />
+        </PlatformButton>
+
+        <PlatformButton
+            name="Kotlin Multiplatform"
+            :selected="activeFilters.includes(kmpPlatformId)"
+            @click="togglePlatformFilter(kmpPlatformId)"
+        >
+          <IconKotlinMultiplatform />
+        </PlatformButton>
+
+        <PlatformButton
+            name="Web"
+            :selected="activeFilters.includes(webPlatformId)"
+            @click="togglePlatformFilter(webPlatformId)"
+        >
+          <IconWeb />
+        </PlatformButton>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-5 w-full px-24 mt-12 z-10">
+      <div class="flex gap-1 jump-up animation-duration-700">
+        <div class="bg-core-950 text-core-50 px-6 py-4 flex gap-0.5 rounded-full">
+          <p class="text-xl font-medium">Work</p>
+          <p class="text-sm font-medium">(4)</p>
+        </div>
+
+        <div class="bg-core-100 text-core-950 px-6 py-4 flex gap-0.5 rounded-full">
+          <p class="text-xl font-medium">About</p>
+        </div>
+      </div>
+
+      <div class="w-full grid grid-cols-3 gap-5 jump-up animation-duration-800">
+        <div class="bg-core-200 rounded-3xl h-[500px]"></div>
+        <div class="bg-core-200 rounded-3xl h-[500px] col-span-2"></div>
+        <div class="bg-core-200 rounded-3xl h-[500px] col-span-2"></div>
+        <div class="bg-core-200 rounded-3xl h-[500px]"></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+
+</style>
+<script setup lang="ts">
+import IconKotlinMultiplatform from "../../assets/icons/IconKotlinMultiplatform.vue";
+import IconAndroid from "../../assets/icons/IconAndroid.vue";
+import IconWeb from "../../assets/icons/IconWeb.vue";
+import PlatformButton from "./PlatformButton.vue";
+import {ref} from "vue";
+
+const androidPlatformId = "android"
+const kmpPlatformId = "kmp"
+const webPlatformId = "web"
+
+const activeFilters = ref<string[]>([])
+
+function togglePlatformFilter(id: string) {
+  if (activeFilters.value.includes(id)) {
+    const index = activeFilters.value.indexOf(id)
+    activeFilters.value.splice(index, 1)
+  } else {
+    activeFilters.value.push(id)
+  }
+}
+</script>
+
+<style scoped>
+@keyframes jump-up {
+  0% {
+    transform: translateY(300px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.jump-up {
+  transform: translateY(300px);
+  animation-delay: 0ms;
+  animation-name: jump-up;
+  animation-timing-function: cubic-bezier(.13,.43,.21,1);
+  animation-fill-mode: forwards;
+}
+</style>

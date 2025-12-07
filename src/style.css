@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+
+    /* Colors */
+    --color-core-50: #FFFFFF;
+    --color-core-100: #F4F4F4;
+    --color-core-200: #E1E1E1;
+    --color-core-300: #D9D9D9;
+    --color-core-400: #BDBDBD;
+    --color-core-500: #A8A8A8;
+    --color-core-700: #484848;
+    --color-core-900: #2D2D2D;
+    --color-core-950: #000000;
+
+    /* Typography */
+    --text-md: 16px;
+
+    /* Animation delay */
+    --animation-delay-100: 100ms;
+    --animation-delay-200: 200ms;
+    --animation-delay-300: 300ms;
+    --animation-delay-400: 400ms;
+    --animation-delay-500: 500ms;
+    --animation-delay-600: 600ms;
+    --animation-delay-700: 700ms;
+    --animation-delay-800: 800ms;
+    --animation-delay-900: 900ms;
+
+    /* Animation duration */
+    --animation-duration-100: 100ms;
+    --animation-duration-200: 200ms;
+    --animation-duration-300: 300ms;
+    --animation-duration-400: 400ms;
+    --animation-duration-500: 500ms;
+    --animation-duration-600: 600ms;
+    --animation-duration-700: 700ms;
+    --animation-duration-800: 800ms;
+    --animation-duration-900: 900ms;
+}
+
+@utility animation-delay-* {
+    animation-delay: --value(--animation-delay-*);
+}
+
+@utility animation-duration-* {
+    animation-duration: --value(--animation-duration-*);
+}
