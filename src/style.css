@@ -10,6 +10,7 @@
     --color-core-400: #BDBDBD;
     --color-core-500: #A8A8A8;
     --color-core-700: #484848;
+    --color-core-800: #424242;
     --color-core-900: #2D2D2D;
     --color-core-950: #000000;
 
@@ -45,4 +46,21 @@
 
 @utility animation-duration-* {
     animation-duration: --value(--animation-duration-*);
+}
+
+@keyframes jump-up {
+    0% {
+        transform: translateY(300px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.jump-up {
+    transform: translateY(300px);
+    animation-delay: 0ms;
+    animation-name: jump-up;
+    animation-timing-function: cubic-bezier(.13,.43,.21,1);
+    animation-fill-mode: forwards;
 }

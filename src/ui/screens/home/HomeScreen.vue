@@ -3,7 +3,7 @@
     <div class="pointer-events-none absolute inset-0 h-[80vh]">
       <!-- Vertical lines -->
       <div class="absolute left-[300px] top-0 h-full w-px bg-linear-to-b from-core-200 via-core-200 to-core-200/0"></div>
-      <div class="absolute right-[300px] top-0 h-full w-px  bg-linear-to-b from-core-200 via-core-200 to-core-200/0"></div>
+      <div class="absolute right-[300px] top-0 h-full w-px bg-linear-to-b from-core-200 via-core-200 to-core-200/0"></div>
 
       <!-- Horizontal lines -->
       <div class="absolute top-[140px] left-0 w-full h-px bg-core-200"></div>
@@ -52,13 +52,15 @@
         </div>
       </div>
 
-      <div class="w-full grid grid-cols-3 gap-5 jump-up animation-duration-800">
+      <div class="w-full grid grid-cols-3 gap-5 mb-16 jump-up animation-duration-800">
         <div class="bg-core-200 rounded-3xl h-[500px]"></div>
         <div class="bg-core-200 rounded-3xl h-[500px] col-span-2"></div>
         <div class="bg-core-200 rounded-3xl h-[500px] col-span-2"></div>
         <div class="bg-core-200 rounded-3xl h-[500px]"></div>
       </div>
     </div>
+
+    <Footer />
   </div>
 </template>
 
@@ -71,6 +73,7 @@ import IconAndroid from "../../assets/icons/IconAndroid.vue";
 import IconWeb from "../../assets/icons/IconWeb.vue";
 import PlatformButton from "./PlatformButton.vue";
 import {ref} from "vue";
+import Footer from "../../generic/footer/Footer.vue";
 
 const androidPlatformId = "android"
 const kmpPlatformId = "kmp"
@@ -87,22 +90,3 @@ function togglePlatformFilter(id: string) {
   }
 }
 </script>
-
-<style scoped>
-@keyframes jump-up {
-  0% {
-    transform: translateY(300px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.jump-up {
-  transform: translateY(300px);
-  animation-delay: 0ms;
-  animation-name: jump-up;
-  animation-timing-function: cubic-bezier(.13,.43,.21,1);
-  animation-fill-mode: forwards;
-}
-</style>
