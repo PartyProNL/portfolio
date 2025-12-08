@@ -23,27 +23,63 @@
 
 <script setup lang="ts">
 import {ref} from "vue";
+import {SyncContent} from "../../../domain/content/SyncContent.ts";
+import {GetProjects} from "../../../domain/project/GetProjects.ts";
 
 const emit = defineEmits(["finish"])
 const finished = ref(false)
 const progress = ref(0)
 
-function start() {
-  increaseProgress()
+const syncContent = new SyncContent()
+const getProjects = new GetProjects()
 
-  setTimeout(() => {
-    emit("finish");
-    finished.value = true
-  }, 2000)
+async function start() {
+  const MIN_DURATION = 1000
+  const startTime = performance.now()
+
+  await syncContent.invoke()
+  progress.value = 50
+
+  const preloadUrls = getPreloadUrls()
+  const progressPerImage = 50 / preloadUrls.length
+
+  const promises = preloadUrls.map((url) =>
+      preloadImage(url).then((img) => {
+        progress.value += progressPerImage
+        return img
+      })
+  )
+
+  await Promise.all([
+      promises,
+      waitForMinimumTime(startTime, MIN_DURATION),
+  ])
+
+  progress.value = 100
+  emit("finish")
+  finished.value = true
 }
 
-function increaseProgress() {
-  if (progress.value != 100) {
-    setTimeout(() => {
-      progress.value++
-      increaseProgress()
-    }, 10)
-  }
+function waitForMinimumTime(startTime: number, minDuration: number) {
+  const elapsed = performance.now() - startTime
+  const remaining = Math.max(0, minDuration - elapsed)
+
+  return new Promise((resolve) => setTimeout(resolve, remaining))
+}
+
+function getPreloadUrls(): string[] {
+  return getProjects.invoke().map((it) => {
+    return it.gridImageUrl
+  })
+}
+
+function preloadImage(src: string): Promise<HTMLImageElement> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error(`Failed to load image: ${src}`));
+    img.src = src;
+  });
 }
 
 start()
