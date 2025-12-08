@@ -11,9 +11,9 @@
     </div>
 
     <div class="w-full flex flex-col gap-4 items-center justify-center mt-[140px] h-[230px]">
-      <h1 class="font-bold text-8xl text-core-950 jump-up animation-duration-500">Youri Scheepers</h1>
+      <h1 class="font-bold text-4xl text-core-950 jump-up animation-duration-600 text-center lg:text-8xl">Youri Scheepers</h1>
 
-      <div class="flex items-center gap-1.5 jump-up animation-duration-600">
+      <div class="flex flex-col items-center gap-1.5 jump-up animation-duration-700 md:flex-row">
         <PlatformButton
             name="Android"
             :selected="activeFilters.includes(ANDROID_PLATFORM_ID)"
@@ -41,8 +41,8 @@
       </div>
     </div>
 
-    <div class="flex flex-col gap-5 w-full px-24 mt-12 z-10">
-      <div class="flex gap-1 jump-up animation-duration-700">
+    <div class="flex flex-col gap-5 w-full px-8 mt-12 z-10 md:px-24">
+      <div class="flex gap-1 jump-up animation-duration-800">
         <div class="bg-core-950 text-core-50 px-6 py-4 flex gap-0.5 rounded-full">
           <p class="text-xl font-medium">Work</p>
           <p class="text-sm font-medium">({{ projects.length }})</p>
@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <div class="w-full grid grid-cols-3 gap-5 mb-16 jump-up animation-duration-800">
+      <div class="w-full grid grid-cols-1 gap-5 mb-16 jump-up animation-duration-900 md:grid-cols-3">
         <ProjectGridItem v-for="project in projects" :project="project" />
       </div>
     </div>

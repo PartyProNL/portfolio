@@ -1,11 +1,9 @@
 <template>
   <div
-      class="rounded-3xl h-[500px] bg-core-200 bg-cover bg-center"
-      :class="{'col-span-2': !project.isGridVertical}"
+      :class="{'md:col-span-2': !project.isGridVertical, 'h-[500px]': project.isGridVertical, 'h-[300px]': !project.isGridVertical}"
+      class="cursor-pointer rounded-3xl md:h-[500px] bg-core-200 bg-cover md:bg-size-[100%] bg-center hover:bg-size-[105%] transition-all duration-300"
       :style="{backgroundImage: `url('${project.gridImageUrl}')`}"
-  >
-
-  </div>
+  />
 </template>
 
 <script setup lang="ts">
