@@ -68,6 +68,8 @@
         <TextBlockPart v-if="bodyPart instanceof TextBlock" :text-block="bodyPart" />
         <ImageBlockPart v-if="bodyPart instanceof ImageBlock" :image-block="bodyPart" />
       </div>
+
+      <div class="h-16" />
     </div>
 
     <div class="w-full bg-core-900 flex flex-col items-center pt-16">

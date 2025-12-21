@@ -1,5 +1,5 @@
 <template>
-  <p class="text-core-300 font-normal text-md max-w-[700px] w-full pb-4">
+  <p class="text-core-300 font-normal text-md max-w-[700px] w-full pb-4 text-justify">
     {{ textBlock.content }}
   </p>
 </template>
