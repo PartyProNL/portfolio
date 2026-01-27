@@ -14,6 +14,7 @@ export class Project {
     public gridImageUrl: string
     public isGridVertical: boolean
     public coverImageUrl: string
+    public order: number
 
     public sourceCodeUrl: string | undefined
     public deploymentUrl: string | undefined
@@ -33,6 +34,7 @@ export class Project {
         gridImageUrl: string,
         isGridVertical: boolean,
         coverImageUrl: string,
+        order: number,
         sourceCodeUrl: string | undefined,
         deploymentUrl: string | undefined,
         bodyParts: BodyPart[],
@@ -48,6 +50,7 @@ export class Project {
         this.gridImageUrl = gridImageUrl
         this.isGridVertical = isGridVertical
         this.coverImageUrl = coverImageUrl
+        this.order = order
         this.sourceCodeUrl = sourceCodeUrl
         this.deploymentUrl = deploymentUrl
         this.bodyParts = bodyParts

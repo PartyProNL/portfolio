@@ -94,6 +94,7 @@ export class ContentfulMapper {
             gridImageAsset.url,
             entryResponse.fields.gridImageShape == "Vertical",
             coverImageAsset.url,
+            entryResponse.fields.order,
             entryResponse.fields.sourceCodeUrl,
             entryResponse.fields.deploymentUrl,
             [],

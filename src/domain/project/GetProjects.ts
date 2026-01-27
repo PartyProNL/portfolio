@@ -7,6 +7,6 @@ export class GetProjects {
 
     public invoke(): Project[] {
         return this.repository.getProjects()
-            .sort((a, b) => a.completedYear - b.completedYear)
+            .sort((a, b) => b.order - a.order)
     }
 }
